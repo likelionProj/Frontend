@@ -1,10 +1,9 @@
 import React from "react";
 import { FlexBox1 } from "../components/global";
-
-const Home = () => {
+const Login = () => {
   return(
     <>
-      <h1>HOME</h1>
+      <h1>LOGIN</h1>
       <FlexBox1>
         <div className = 'top'>
           top
@@ -20,4 +19,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Login

@@ -1,7 +1,6 @@
 import React from "react";
 import { FlexBox1 } from "../components/global";
 
-import './common.css';
 
 const Start = () => {
   return(

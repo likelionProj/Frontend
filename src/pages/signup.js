@@ -1,8 +1,5 @@
 import React from "react";
 import { FlexBox1 } from "../components/global";
-// import emailIcon from '../assets/icons/email';
-
-import './common.css';
 
 
 const Signup = () => {
@@ -14,26 +11,32 @@ const Signup = () => {
           top
         </div>
         <div className = 'mid'>
+        <div className="login" style={{marginBottom: 12}}>
           <div className="imageBox"><img src="mail.png" alt="" /></div>
-          <input class="login" style={{marginBottom: 12}}
+          <input className="email"
             name="email"
             type="text"
             placeholder="이메일 아이디 입력"
           />
+          </div>
 
+          <div className="login" style={{marginBottom: 12}}>
           <div className="imageBox"><img src="password.png" alt="" /></div>
-          <input className="login" style={{marginBottom: 12}}
-            name="password"
+          <input className="email"
+            name="email"
             type="text"
             placeholder="비밀번호 입력"
           />
+          </div>
 
+          <div className="login" style={{marginBottom: 48}}>
           <div className="imageBox"><img src="password.png" alt="" /></div>
-          <input className="login" style={{marginBottom: 48}}
-            name="password"
+          <input className="email"
+            name="email"
             type="text"
-            placeholder="비밀번호 한 번 더 입력"
-          />     
+            placeholder="비밀번호 한 번 더 입력 "
+          />
+          </div>    
         </div>
         <div className = 'bottom'>
           <button className="mainBtn" style={{marginBottom: 60}}>Sign up</button>

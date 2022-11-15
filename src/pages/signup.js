@@ -1,7 +1,9 @@
 import React from "react";
 import { FlexBox1 } from "../components/global";
+// import emailIcon from '../assets/icons/email';
 
 import './common.css';
+
 
 const Signup = () => {
   return(
@@ -12,15 +14,34 @@ const Signup = () => {
           top
         </div>
         <div className = 'mid'>
-          mid
+          <div className="imageBox"><img src="mail.png" alt="" /></div>
+          <input class="login" style={{marginBottom: 12}}
+            name="email"
+            type="text"
+            placeholder="이메일 아이디 입력"
+          />
+
+          <div className="imageBox"><img src="password.png" alt="" /></div>
+          <input className="login" style={{marginBottom: 12}}
+            name="password"
+            type="text"
+            placeholder="비밀번호 입력"
+          />
+
+          <div className="imageBox"><img src="password.png" alt="" /></div>
+          <input className="login" style={{marginBottom: 48}}
+            name="password"
+            type="text"
+            placeholder="비밀번호 한 번 더 입력"
+          />     
         </div>
         <div className = 'bottom'>
           <button className="mainBtn" style={{marginBottom: 60}}>Sign up</button>
           <div className="subBtnArea">
             <div className="snsSignup">
-              <button className="kakaoTalk"><img src="카카오톡.png"></img></button>
-              <button className="naver"><img src="네이버.png"></img></button>
-              <button className="apple"><img src="애플.png"></img></button>
+              <button className="kakaoTalk"><img src="카카오톡.png" alt=""></img></button>
+              <button className="naver"><img src="네이버.png" alt=""></img></button>
+              <button className="apple"><img src="애플.png" alt=""></img></button>
               <p className="snsText">SNS로 회원가입하기</p>
             </div>
           </div>

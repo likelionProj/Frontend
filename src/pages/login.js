@@ -3,6 +3,7 @@ import { FlexBox1 } from "../components/global";
 
 import './common.css';
 
+
 const Login = () => {
   return(
     <>
@@ -12,7 +13,18 @@ const Login = () => {
           top
         </div>
         <div className = 'mid'>
-          mid
+          <div className="imageBox"><img src="mail.png" alt="" /></div>
+          <input className="login" style={{marginBottom: 21}}
+            name="email"
+            type="text"
+            placeholder="이메일 아이디 입력"
+          />
+          <div className="imageBox"><img src="password.png" alt="" /></div>
+          <input className="login" style={{marginBottom: 43}}
+            name="password"
+            type="text"
+            placeholder="비밀번호 입력"
+           />
         </div>
         <div className = 'bottom'>
           <button className="mainBtn">Log in</button>

@@ -12,7 +12,11 @@ const Start = () => {
           top
         </div>
         <div className = 'mid'>
-          mid
+          <div className="btn"><img src="search.png" alt="" /></div>
+          <input className="search" style={{marginBottom: 51}}
+            name="search"
+            type="text"
+          /> 
         </div>
         <div className = 'bottom'>
           <button className="mainBtn">START!</button>

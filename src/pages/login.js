@@ -5,10 +5,16 @@ import { FlexBox1 } from "../components/global";
 const Login = () => {
   return(
     <>
-      <h1>LOGIN</h1>
       <FlexBox1>
         <div className = 'top'>
-          top
+          <div className = "top_container">
+            <div className = "img_container">
+              <img src="그림1.png"/>
+            </div>
+            <div className="title_container">
+              <h1>LOGIN</h1>
+            </div>
+          </div>
         </div>
         <div className = 'mid'>
 

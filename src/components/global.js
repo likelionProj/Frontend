@@ -12,9 +12,30 @@ export const FlexBox1 = styled.div`
   & div.top,
     div.mid,
     div.bottom{
-    border: 1px solid black;
-
-
+    /* border: 1px solid black; */
+    .top_container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .title_container>h1{
+      font-size: 36px;
+      line-height: 150%;
+      text-align: center;
+      letter-spacing: -0.019em;
+      margin-bottom: 0px;
+      margin-top: 10px;
+    }
+    .sub_container>p{
+      text-align: center;
+      color: #CBB292;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
     .login {
         display: flex;
         flex-direction: column;

@@ -30,6 +30,6 @@ import { FlexBox1 } from "../components/global";
       </FlexBox1>
     </>
   )
-}
+
 
 export default Start

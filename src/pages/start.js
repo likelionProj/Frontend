@@ -1,6 +1,8 @@
 import React from "react";
 import { FlexBox1 } from "../components/global";
 
+
+const Start = () => {
   return(
     <>
       <FlexBox1>
@@ -30,6 +32,6 @@ import { FlexBox1 } from "../components/global";
       </FlexBox1>
     </>
   )
+}
 
-
-export default Start
+export default Start;

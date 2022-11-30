@@ -105,6 +105,7 @@ const Contents = styled.div`
       width: 100%;
       height: 520px;
       overflow-y: scroll;
+      margin-top: 20px;
     }
 
     .sendBtn {
@@ -117,7 +118,7 @@ const Contents = styled.div`
       font-weight: 700;
       border-style: none;
       margin: auto;
-      margin-top: 40px;
+      margin-top: 20px;
     }
 `
 

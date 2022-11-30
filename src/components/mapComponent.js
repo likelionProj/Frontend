@@ -13,7 +13,7 @@ const MapComponent = (props) => {
         const position = new naver.maps.LatLng(lat, lon);
         const mapOptions = {
             center: position,
-            zoom: 16,
+            zoom: 17,
             minZoom: 6,
             zoomControl: true,
             zoomControlOptions: {
@@ -22,17 +22,19 @@ const MapComponent = (props) => {
         };
  
         const map = new naver.maps.Map(container, mapOptions);
- 
+        const marker = [];
         CafeData.forEach((data)=>{
-            let marker = new naver.maps.Marker({
+            let markerEl = new naver.maps.Marker({
                 map: map,
-                text: data.name,
+                id: data.name,
+                // text: data.name,
                 title: data.name,
                 position: new naver.maps.LatLng(data.lat, data.lng)
             })
+            marker.push(markerEl)
         })
  
-        console.log("loading navermap");
+        console.log(marker);
     },[props]);
  
     return (

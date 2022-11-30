@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import MapComponent from "../components/mapComponent";
+import { useLocation } from 'react-router-dom'
+import CampusData from "../data/campusData";
+
 
 const Home = () => {
+  const location = useLocation();
+  const [lat, setLat] = useState(0);
+  const [lon, setLon] = useState(0);
+  useEffect(()=>{
+    CampusData.forEach((data)=>{
+      if(data.name === location.state.campus){
+        setLat(data.lat);
+        setLon(data.lon);
+      }
+    })
+  }, [])
   return(
     <>
       <Container>
@@ -17,7 +32,7 @@ const Home = () => {
           </div>
         </SearchBox>
         <MapBox>
-          <img src="map임시.png"/>
+          <MapComponent lat={lat} lon={lon}/>
         </MapBox>
       </Container>
     </>

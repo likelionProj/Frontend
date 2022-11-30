@@ -4,6 +4,7 @@ import Home from "./pages/home"
 import Signup from "./pages/signup"
 import Login from "./pages/login"
 import Start from "./pages/start"
+import Filter from "./pages/Filter"
 
 import styled from "styled-components"
 
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/start" element={<Start/>}/>
+        <Route path="/filter" element={<Filter/>}/>
       </Routes>
     </BrowserRouter>
     </Frame>

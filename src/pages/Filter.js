@@ -1,10 +1,15 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FlexBox1 } from "../components/global";
 import { Link } from "react-router-dom";
 import Scroll from "./ScrollBox";
 
-const Filter = () => {
+const Filter = ({ getRecommend }) => {
+    const [sendData, setSendData] = useState({})
+    const getFunction = (data) =>{
+      setSendData(data);
+    }
     return(
         <>
             <FlexBox1>
@@ -18,9 +23,9 @@ const Filter = () => {
                         <p>카페 필터</p>
                     </FilterTitle>
                     <span>
-                      <Scroll/>
+                      <Scroll getFunction={getFunction} />
                     </span>
-                    <button className="sendBtn">카페 추천받기</button>
+                    <button onClick={()=>getRecommend(sendData)} className="sendBtn">카페 추천받기</button>
                 </Contents>
                 </FlexBox2>
             </FlexBox1>
@@ -109,6 +114,7 @@ const Contents = styled.div`
     }
 
     .sendBtn {
+      cursor: pointer;
       width: 160px;
       height: 50px;
       border-radius: 30px;

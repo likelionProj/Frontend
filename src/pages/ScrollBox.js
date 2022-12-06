@@ -1,207 +1,217 @@
 import React from "react";
 import styled from "styled-components";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
-const MoodOption = () => {
-  const moodsInit = [
+const dataInit = {
+  moods : [
     { name : '혼공하기 좋은', state: false },
     { name : '팀플하기 좋은', state: false },
     { name : '밤새기 좋은', state: false },
-    { name : '작업하기 좋은', state: false }]
+    { name : '작업하기 좋은', state: false }
+  ],
+  nums : [
+    { name: '혼자 공부', state: false },
+    { name: '2인 이상', state: false },
+    { name: '4인 이상', state: false },
+    { name: '6인 이상', state: false },
+    { name: '10인 이상', state: false}
+  ],
+  sokets : [
+    { name: '있음', state: false },
+    { name: '없음', state: false }
+  ],
+  desks : [
+    { name : '원형', state: false },
+    { name : '네모', state: false },
+  ],
+  chairs : [
+    { name : '있음', state: false },
+    { name : '없음', state: false }
+  ],
+  noises : [
+    { name : '30 ~ 40db', state: false },
+    { name : '40 ~ 50db', state: false },
+    { name : '50 ~ 60db', state: false },
+    { name : '60 ~ 70db', state: false },
+  ],
+  times : [
+    { name : '밤 9시까지', state: false },
+    { name : '밤 10시까지', state: false },
+    { name : '밤 11시까지', state: false },
+    { name : '24시간', state: false },
+  ]
+}
 
-  const [moods, setMoods] = useState(moodsInit);
-  
-  const moodHandler = (idx) => {
-    const tmpMoods = moods;
-    tmpMoods[idx].state = !tmpMoods[idx].state;
-    setMoods([...tmpMoods]);
-  }
+const Scroll = ({ getFunction }) => {
+    const [data, setData] = useState(dataInit);
+    
+    const checkedStyle = {
+      borderColor: "#DBA37D",
+      color: "#BD6C34"
+    }
+    const basicStyle = {
+      color: "#B0B0B0"
+    }
 
-  return (
-    <Mood>
-      <img src="연필.png" alt=""/>
-      <p>어떤 무드를 원하시나요?</p>
-      <Option1>
-        <div>
-        {moods.map((mood, idx)=>{
-            return(
-              <button onClick={()=>moodHandler(idx)}>
-                <p style={mood.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>#{mood.name}</p>
-              </button>
-            )
-          })
+    useEffect(()=>{
+      getFunction(data);
+    }, [data])
+
+    const moodHandler = (idx) => {
+      const tmpData = data;
+      tmpData.moods[idx].state = !tmpData.moods[idx].state;
+      setData({...tmpData})
+    }
+    const numHandler = (idx) => {
+      const tmpData = data;
+      for (let i=0; i<tmpData.nums.length; i++){
+        if (i!==idx){
+          tmpData.nums[i].state = false;
         }
-        </div>
-      </Option1>
-    </Mood>
-  )
-}
-
-const VariousOption = () => {
-  const optionsInit = {
-    numsInit : [
-      { name: '혼자 공부', state: false },
-      { name: '2인 이상', state: false },
-      { name: '4인 이상', state: false },
-      { name: '6인 이상', state: false },
-      { name: '10인 이상', state: false}
-    ],
-    soketsInit : [
-      { name: '있음', state: false },
-      { name: '없음', state: false }
-    ],
-    desksInit : [
-      { name : '원형', state: false },
-      { name : '네모', state: false },
-    ],
-    chairsInit : [
-      { name : '있음', state: false },
-      { name : '없음', state: false }
-    ],
-    noisesInit : [
-      { name : '30 ~ 40db', state: false },
-      { name : '40 ~ 50db', state: false },
-      { name : '50 ~ 60db', state: false },
-      { name : '60 ~ 70db', state: false },
-    ],
-    timesInit : [
-      { name : '밤 9시까지', state: false },
-      { name : '밤 10시까지', state: false },
-      { name : '밤 11시까지', state: false },
-      { name : '24시간', state: false },
-    ]
-  }
-
-  const [nums, setNums] = useState(optionsInit.numsInit);
-  const [sokets, setSokets] = useState(optionsInit.soketsInit);
-  const [desks, setDesks] = useState(optionsInit.desksInit);
-  const [chairs, setChairs] = useState(optionsInit.chairsInit);
-  const [noises, setNoises] = useState(optionsInit.noisesInit);
-  const [times, setTimes] = useState(optionsInit.timesInit);
-
-  const numHandler = (idx) => {
-    const tmpNums = nums;
-    tmpNums[idx].state = !tmpNums[idx].state;
-    setNums([...tmpNums]);
-  }
-  const soketHandler = (idx) => {
-    const tmpSokets = sokets;
-    tmpSokets[idx].state = !tmpSokets[idx].state;
-    setSokets([...tmpSokets]);
-  }
-  const deskHandler = (idx) => {
-    const tmpDesks = desks;
-    tmpDesks[idx].state = !tmpDesks[idx].state;
-    setDesks([...tmpDesks]);
-  }
-  const chairHandler = (idx) => {
-    const tmpChairs = chairs;
-    tmpChairs[idx].state = !tmpChairs[idx].state;
-    setChairs([...tmpChairs]);
-  }
-  const noiseHandler = (idx) => {
-    const tmpNoises = noises;
-    tmpNoises[idx].state = !tmpNoises[idx].state;
-    setNoises([...tmpNoises]);
-  }
-  const timeHandler = (idx) => {
-    const tmpTimes = times;
-    tmpTimes[idx].state = !tmpTimes[idx].state;
-    setTimes([...tmpTimes]);
-  }
-
-  return (
-      <Various>
-          <img src="티비.png" alt=""/>
-          <p>어떤 옵션을 원하시나요?</p>
-          <Option2>
-              <section><h3>인원수</h3></section>
-              <div>
-              {nums.map((num, idx)=>{
-                  return(
-                    <button onClick={()=>numHandler(idx)}>
-                      <p style={num.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>{num.name}</p>
-                    </button>
-                  )
-                })
-              }</div>
-          </Option2>
-          <Option3>
-              <section><h3>콘센트</h3></section>
-              <div>
-              {sokets.map((soket, idx)=>{
-                  return(
-                    <button onClick={()=>soketHandler(idx)}>
-                      <p style={soket.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>{soket.name}</p>
-                    </button>
-                  )
-                })
-              }</div>
-          </Option3>
-          <Option4>
-              <section><h3>책상모양</h3></section>
-              <div>
-              {desks.map((desk, idx)=>{
-                  return(
-                    <button onClick={()=>deskHandler(idx)}>
-                      <p style={desk.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>{desk.name}</p>
-                    </button>
-                  )
-                })
-              }</div>
-          </Option4>
-          <Option5>
-              <section><h3>의자등받이</h3></section>
-              <div>
-              {chairs.map((chair, idx)=>{
-                  return(
-                    <button onClick={()=>chairHandler(idx)}>
-                      <p style={chair.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>{chair.name}</p>
-                    </button>
-                  )
-                })
-              }</div>
-          </Option5>
-          <Option6>
-              <section><h3>소음 정도(데시벨)</h3></section>
-              <article>
-              <section><h4>30~40db 도서관 정도</h4>
-              <h4>40~50db 조용한 사무실</h4></section>
-              <section><h4>50~60db 약간의 잡담</h4>
-              <h4>60~70db 시끄러운 사무실</h4></section>
-              </article>
-              <div>
-              {noises.map((noise, idx)=>{
-                  return(
-                    <button onClick={()=>noiseHandler(idx)}>
-                      <p style={noise.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>{noise.name}</p>
-                    </button>
-                  )
-                })
-              }</div>
-          </Option6>
-          <Option7>
-              <section><h3>운영시간</h3></section>
-              <div>
-              {times.map((time, idx)=>{
-                  return(
-                    <button onClick={()=>timeHandler(idx)}>
-                      <p style={time.state?{color:"#BD6C34"}:{color:"#B0B0B0"}}>{time.name}</p>
-                    </button>
-                  )
-                })
-              }</div>
-          </Option7>
-      </Various>
-  )
-}
-
-const Scroll = () => {
-
+      }
+      tmpData.nums[idx].state = !tmpData.nums[idx].state;
+      setData({...tmpData});
+    }
+    const soketHandler = (idx) => {
+      const tmpData = data;
+      for (let i=0; i<tmpData.sokets.length; i++){
+        if (i!==idx){
+          tmpData.sokets[i].state = false;
+        }
+      }
+      tmpData.sokets[idx].state = !tmpData.sokets[idx].state;
+      setData({...tmpData});
+    }
+    const deskHandler = (idx) => {
+      const tmpData = data;
+      tmpData.desks[idx].state = !tmpData.desks[idx].state;
+      setData({...tmpData});
+    }
+    const chairHandler = (idx) => {
+      const tmpData = data;
+      for (let i=0; i<tmpData.chairs.length; i++){
+        if (i!==idx){
+          tmpData.chairs[i].state = false;
+        }
+      }
+      tmpData.chairs[idx].state = !tmpData.chairs[idx].state;
+      setData({...tmpData});
+    }
+    const noiseHandler = (idx) => {
+      const tmpData = data;
+      tmpData.noises[idx].state = !tmpData.noises[idx].state;
+      setData({...tmpData});
+    }
+    const timeHandler = (idx) => {
+      const tmpData = data;
+      for (let i=0; i<tmpData.times.length; i++){
+        if (i!==idx){
+          tmpData.times[i].state = false;
+        }
+      }
+      tmpData.times[idx].state = !tmpData.times[idx].state;
+      setData({...tmpData});
+    }
     return( 
         <>
-            <MoodOption />
-            <VariousOption />
+          <Mood>
+            <img src="연필.png" alt=""/>
+            <p>어떤 무드를 원하시나요?</p>
+            <Option1>
+              <div>
+              {data.moods.map((mood, idx)=>{
+                  return(
+                    <button onClick={()=>moodHandler(idx)} style={mood.state?checkedStyle:basicStyle}>
+                      <p style={mood.state?checkedStyle:basicStyle}>#{mood.name}</p>
+                    </button>
+                  )
+                })
+              }
+              </div>
+            </Option1>
+          </Mood>
+          <Various>
+            <img src="티비.png" alt=""/>
+            <p>어떤 옵션을 원하시나요?</p>
+            <Option2>
+                <section><h3>인원수</h3></section>
+                <div>
+                {data.nums.map((num, idx)=>{
+                    return(
+                      <button onClick={()=>numHandler(idx)} style={num.state?checkedStyle:basicStyle}>
+                        <p style={num.state?checkedStyle:basicStyle}>{num.name}</p>
+                      </button>
+                    )
+                  })
+                }</div>
+            </Option2>
+            <Option3>
+                <section><h3>콘센트</h3></section>
+                <div>
+                {data.sokets.map((soket, idx)=>{
+                    return(
+                      <button onClick={()=>soketHandler(idx)}  style={soket.state?checkedStyle:basicStyle}>
+                        <p style={soket.state?checkedStyle:basicStyle}>{soket.name}</p>
+                      </button>
+                    )
+                  })
+                }</div>
+            </Option3>
+            <Option4>
+                <section><h3>책상모양</h3></section>
+                <div>
+                {data.desks.map((desk, idx)=>{
+                    return(
+                      <button onClick={()=>deskHandler(idx)} style={desk.state?checkedStyle:basicStyle}>
+                        <p style={desk.state?checkedStyle:basicStyle}>{desk.name}</p>
+                      </button>
+                    )
+                  })
+                }</div>
+            </Option4>
+            <Option5>
+                <section><h3>의자등받이</h3></section>
+                <div>
+                {data.chairs.map((chair, idx)=>{
+                    return(
+                      <button onClick={()=>chairHandler(idx)}  style={chair.state?checkedStyle:basicStyle}>
+                        <p style={chair.state?checkedStyle:basicStyle}>{chair.name}</p>
+                      </button>
+                    )
+                  })
+                }</div>
+            </Option5>
+            <Option6>
+                <section><h3>소음 정도(데시벨)</h3></section>
+                <article>
+                <section><h4>30~40db 도서관 정도</h4>
+                <h4>40~50db 조용한 사무실</h4></section>
+                <section><h4>50~60db 약간의 잡담</h4>
+                <h4>60~70db 시끄러운 사무실</h4></section>
+                </article>
+                <div>
+                {data.noises.map((noise, idx)=>{
+                    return(
+                      <button onClick={()=>noiseHandler(idx)} style={noise.state?checkedStyle:basicStyle}>
+                        <p style={noise.state?checkedStyle:basicStyle}>{noise.name}</p>
+                      </button>
+                    )
+                  })
+                }</div>
+            </Option6>
+            <Option7>
+                <section><h3>운영시간</h3></section>
+                <div>
+                {data.times.map((time, idx)=>{
+                    return(
+                      <button onClick={()=>timeHandler(idx)} style={time.state?checkedStyle:basicStyle}>
+                        <p style={time.state?checkedStyle:basicStyle}>{time.name}</p>
+                      </button>
+                    )
+                  })
+                }</div>
+            </Option7>
+          </Various>
         </>
     )
 }
@@ -272,14 +282,20 @@ const Option1 = styled.div`
         background-color: #FFF;
         margin-right: 12px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
-
+    
     p {
         font-family: 'Inter', sans-serif;
         font-weight: 600;
         color: #B0B0B0;
         font-size: 17px;
         margin-left: -12px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `
 
@@ -309,6 +325,8 @@ const Option2 = styled.div`
         background-color: #FFF;
         margin-right: 15px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
 
     p {
@@ -324,6 +342,10 @@ const Option2 = styled.div`
         font-weight: 600;
         font-size: 16px;
         padding-top: 3px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `
 
@@ -353,6 +375,8 @@ const Option3 = styled.div`
         background-color: #FFF;
         margin-right: 15px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
 
     p {
@@ -368,6 +392,10 @@ const Option3 = styled.div`
         font-weight: 600;
         font-size: 16px;
         padding-top: 6px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `
 
@@ -397,6 +425,8 @@ const Option4 = styled.div`
         background-color: #FFF;
         margin-right: 18px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
 
     p {
@@ -412,6 +442,10 @@ const Option4 = styled.div`
         font-weight: 600;
         font-size: 16px;
         padding-top: 6px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `
 
@@ -441,6 +475,8 @@ const Option5 = styled.div`
         background-color: #FFF;
         margin-right: 18px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
 
     p {
@@ -456,6 +492,10 @@ const Option5 = styled.div`
         font-weight: 600;
         font-size: 16px;
         padding-top: 6px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `
 
@@ -479,6 +519,8 @@ const Option6 = styled.div`
         background-color: #FFF;
         margin-right: 48px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
 
     p {
@@ -508,6 +550,10 @@ const Option6 = styled.div`
 
     article {
         margin-bottom: 19px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `
 
@@ -531,6 +577,8 @@ const Option7 = styled.div`
         background-color: #FFF;
         margin-right: 48px;
         margin-bottom: 15px;
+        cursor: pointer;
+        transition: .2s;
     }
 
     p {
@@ -560,5 +608,9 @@ const Option7 = styled.div`
 
     article {
         margin-bottom: 19px;
+    }
+
+    button:hover{
+      border-width: 3px;
     }
 `

@@ -9,6 +9,10 @@ import Filter from "./pages/Filter"
 import styled from "styled-components"
 
 const App = () => {
+  const getRecommend = (data) => {
+    console.log('추천받기 버튼 누름');
+    console.log(data);
+  }
   return(
     <Frame>
     <BrowserRouter>
@@ -17,7 +21,7 @@ const App = () => {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/start" element={<Start/>}/>
-        <Route path="/filter" element={<Filter/>}/>
+        <Route path="/filter" element={<Filter getRecommend={getRecommend}/>}/>
       </Routes>
     </BrowserRouter>
     </Frame>

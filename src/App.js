@@ -5,6 +5,7 @@ import Signup from "./pages/signup"
 import Login from "./pages/login"
 import Start from "./pages/start"
 import Filter from "./pages/Filter"
+import CafeDetail from "./pages/cafeDetail"
 
 import styled from "styled-components"
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/login" element={<Login/>}/>
         <Route path="/start" element={<Start/>}/>
         <Route path="/filter" element={<Filter/>}/>
+        <Route path="/cafedetail" element={<CafeDetail/>}/>
       </Routes>
     </BrowserRouter>
     </Frame>

@@ -7,6 +7,7 @@ import Start from "./pages/start"
 import Cafelist from "./pages/cafelist"
 import MyPage from "./pages/mypage"
 import Filter from "./pages/Filter"
+import CafeDetail from "./pages/cafeDetail"
 
 import styled from "styled-components"
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/cafelist" element={<Cafelist/>}/>
         <Route path="/mypage" element={<MyPage/>}/>
         <Route path="/filter" element={<Filter getRecommend={getRecommend}/>}/>
+        <Route path="/cafedetail" element={<CafeDetail/>}/>
       </Routes>
     </BrowserRouter>
     </Frame>
